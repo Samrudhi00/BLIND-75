@@ -1,0 +1,53 @@
+//////////////////////////////////////////// APPROACH 1 /////////////////////////////////
+TC -> O(n log n)
+SC -> O(1)
+
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        return nums[0];
+        
+    }
+};
+
+//////////////////////////////////////////// APPROACH 2 /////////////////////////////////
+TC -> O(log n)
+SC ->O(1)
+
+#include <algorithm>
+#include <climits>
+#include <vector>
+
+using namespace std;
+
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        if (nums.empty())
+            return INT_MAX;
+        int L = 0, R = nums.size() - 1;
+        int ans = nums[0];
+
+        while (L <= R) {
+            if (nums[L] < nums[R]) {
+                ans = min(ans, nums[L]);
+                break;
+            }
+            int mid = L + (R - L) / 2;
+            ans = min(ans, nums[mid]);
+            if (nums[mid] >= nums[L]) {
+                L = mid + 1;
+            } else {
+                R = mid - 1;
+            }
+        }
+
+        return ans;
+    }
+};
+
+
+//////////////////////////////////////////// APPROACH 1 /////////////////////////////////
+TC ->
+SC ->
