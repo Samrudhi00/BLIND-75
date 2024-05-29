@@ -1,0 +1,32 @@
+/////////////////////////////////// APPROCH 1 /////////////////////////
+TC ->O(32) ->O(1)
+SC ->O(1)
+class Solution {
+public:
+    int hammingWeight(int n) {
+        int ans=0;
+        while(n){
+            ans += n % 2;
+            n = n>>1;
+        }
+        return ans;
+        
+    }
+};
+
+/////////////////////////////////// APPROCH 1 /////////////////////////
+TC ->O(32) ->O(1)
+SC ->O(1)
+
+class Solution {
+public:
+    int hammingWeight(int n) {
+        int ans=0;
+        while(n){
+            n &= (n-1);
+            ans +=1;
+        }
+        return ans;
+        
+    }
+};
