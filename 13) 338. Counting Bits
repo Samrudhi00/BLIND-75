@@ -1,0 +1,36 @@
+///////////////////////////// APPROCH 1 /////////////////////////////
+TC ->O(n)
+SC ->O(n)
+
+class Solution {
+public:
+    vector<int> countBits(int n) {
+        vector<int> v(n+1, 0);
+        for (int i = 1; i <= n; i++) {
+            v[i] = v[i / 2] + (i & 1);
+        }
+        return v;
+    }
+};
+
+
+///////////////////////////// APPROCH 2 /////////////////////////////
+TC ->O(n)
+SC ->O(n)
+
+class Solution {
+public:
+    vector<int> countBits(int n) {
+        vector<int> dp(n + 1, 0);
+        int offset = 1;
+        for (int i = 1; i <= n; ++i) {
+            if (i == offset * 2) {
+                offset = i;
+            }
+            dp[i] = 1 + dp[i - offset];
+        }
+        return dp;
+    }
+};
+
+
