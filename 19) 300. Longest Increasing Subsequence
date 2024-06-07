@@ -1,0 +1,18 @@
+////////////////////////////// APPROCH - 1//////////////////////////////
+TC -> O(n2)+O(n)=O(n2).
+SC -> O(n)
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        if (nums.empty()) return 0;
+        vector<int> list(nums.size(), 1);
+       for (int i = nums.size() - 1; i >= 0; --i) {
+            for (int j = i + 1; j < nums.size(); ++j) {
+                if (nums[i] < nums[j]) {
+                    list[i] = max(list[i], 1 + list[j]);
+                }
+            }
+        }
+        return *max_element(list.begin(), list.end());
+    }
+};
